@@ -9,12 +9,7 @@ import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
 import path from "path";
 
-//static file
-app.use(express.static(path.join(__dirname,'./client/build')))
 
-app.get('*',function(req,res){
-  res.sendFile(path.join(__dirname,'.client/build/index.html'))
-})
 //configure env
 dotenv.config();
 
@@ -23,6 +18,13 @@ connectDB();
 
 //rest object
 const app = express();
+
+//static file
+app.use(express.static(path.join(__dirname,'./client/build')))
+
+app.get('*',function(req,res){
+  res.sendFile(path.join(__dirname,'.client/build/index.html'))
+})
 
 //middelwares
 app.use(cors());
